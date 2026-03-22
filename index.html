@@ -3,920 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Артём Бородин. Юрист, Разработчик</title>
+    <title>Артём Бородин</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* =========================================
-               1. PRIMITIVES
-               ========================================= */
-            
-            /* --- Numbers & Integers --- */
-            --num-0: 0;
-            --num-1: 1;
-            --num-10: 10;
-            
-            /* --- Percentages --- */
-            --pct-0: 0%;
-            --pct-50: 50%;
-            --pct-70: 70%;
-            --pct-100: 100%;
-            --pct-400: 400%; 
+            --c-bg:     #F7F4EF;
+            --c-white:  #FFFFFF;
+            --c-ink:    #171412;
+            --c-sub:    #2C2926;
+            --c-muted:  #454240;
+            --c-faint:  #6A6662;
+            --c-line:   #DDD8D0;
+            --c-line-h: #B5AFA8;
+            --c-green:  #166534;
+            --c-blue:   #1e40af;
+            --c-amber:  #92400e;
 
-            /* --- Opacity --- */
-            --op-0: 0;
-            --op-05: 0.05;
-            --op-10: 0.1;
-            --op-15: 0.15;
-            --op-20: 0.2;
-            --op-40: 0.4;
-            --op-60: 0.6;
-            --op-70: 0.7;
-            --op-80: 0.8;
-            --op-85: 0.85;
-            --op-100: 1;
+            --f-serif: 'Lora', Georgia, serif;
+            --f-mono:  'IBM Plex Mono', monospace;
 
-            /* --- Line Heights --- */
-            --lh-none: 1;
-            --lh-tight: 1.2;
-            --lh-relaxed: 1.5;
-            --lh-base: 1.6;
+            --fs-h1:     clamp(2rem, 3.8vw, 2.9rem);
+            --fs-h2:     clamp(1.45rem, 2.3vw, 1.75rem);
+            --fs-tag:    clamp(1.05rem, 1.3vw, 1.2rem);
+            --fs-body:   clamp(1rem, 1.15vw, 1.075rem);
+            --fs-sm:     clamp(0.93rem, 1.05vw, 1rem);
+            --fs-proj:   clamp(1rem, 1.4vw, 1.15rem);
+            --fs-mono:   clamp(0.8rem, 0.9vw, 0.875rem);
+            --fs-mono-s: clamp(0.72rem, 0.78vw, 0.775rem);
+            --fs-tech:   clamp(0.67rem, 0.72vw, 0.72rem);
 
-            /* --- Letter Spacing --- */
-            --track-tight: -0.05em;
-            --track-wide: 1px;
-            --track-normal: 0;
+            --lh-head:  1.05;
+            --lh-tight: 1.25;
+            --lh-body:  1.85;
+            --lh-loose: 1.65;
+            --lh-mono:  2;
 
-            /* --- Flex/Grid --- */
-            --flex-grow-1: 1;
-            --flex-shrink-0: 0;
+            --ls-tight: -0.5px;
+            --ls-caps:   1.5px;
+            --ls-meta:   0.3px;
 
-            /* =========================================
-               2. DIMENSIONS & SPACING
-               ========================================= */
+            --sp-1: clamp(0.3rem,  0.45vw, 0.4rem);
+            --sp-2: clamp(0.5rem,  0.7vw,  0.6rem);
+            --sp-3: clamp(0.8rem,  1.1vw,  1rem);
+            --sp-4: clamp(1.2rem,  1.8vw,  1.6rem);
+            --sp-5: clamp(1.9rem,  3vw,    2.6rem);
+            --sp-6: clamp(2.75rem, 4.5vw,  4rem);
+            --sp-7: clamp(4rem,    6.5vw,  5.5rem);
 
-            /* --- Component Specific Spacing --- */
-            --pad-btn-y: 0.8em;
-            --pad-btn-x: 1.5em;
-            --pad-tag-y: 0.4em;
-            --pad-tag-x: 0.8em;
-            --pad-badge-y: 0.3em;
-            --pad-badge-x: 0.6em;
-            --pad-social-y: 0.5em;
-            --pad-social-x: 1em;
-            --gap-link: 0.5em;
-            --gap-link-hover: 0.8em;
-            --margin-social-x: 0.3em;
-            --margin-award-date: 0.2em;
-            --min-w-icon: 1.5em;
+            --w-page:     min(1040px, 92vw);
+            --pad-page:   clamp(1.25rem, 3vw,   2.5rem);
+            --pad-nav:    clamp(1rem,    1.8vw,  1.5rem);
+            --pad-tag-v:  clamp(0.22rem, 0.3vw,  0.3rem);
+            --pad-tag-h:  clamp(0.45rem, 0.6vw,  0.6rem);
+            --pad-tech-v: clamp(0.65rem, 1vw,    0.9rem);
+            --pad-tech-h: clamp(0.3rem,  0.5vw,  0.45rem);
 
-            /* --- Fluid Spacing --- */
-            --sp-2xs: clamp(0.25rem, 0.5vw, 0.375rem);
-            --sp-xs: clamp(0.5rem, 1vw, 0.75rem);
-            --sp-sm: clamp(1rem, 2vw, 1.5rem);
-            --sp-md: clamp(2rem, 4vw, 3rem);
-            --sp-lg: clamp(4rem, 8vw, 6rem);
-            
-            --layout-w: clamp(20rem, 92vw, 75rem);
-            --header-pad: clamp(2rem, 4vw, 3rem);
-            
-            /* --- Sizes --- */
-            --sz-card-min: 20rem;
-            --sz-avatar: clamp(9.5rem, 23vw, 14rem);
-            --sz-proj-img: clamp(11rem, 20vh,14rem);
-            --sz-dot: 0.5rem;
-            --sz-border-thin: 1px;
-            --sz-border-thick: 2px;
-            --sz-border-avatar: 4px;
-            --sz-pulse-spread: 10px;
-            --sz-award-offset: 5px;
+            --gap-nav:  clamp(1.25rem, 2.5vw, 2rem);
+            --gap-cols: clamp(2.5rem,  4.5vw, 4.5rem);
+            --gap-grid: clamp(1.1rem,  1.8vw, 1.5rem);
+            --gap-tech: clamp(0.45rem, 0.7vw, 0.6rem);
 
-            /* --- Border Radius --- */
-            --rad-sm: 0.25rem;
-            --rad-md: 0.5rem;
-            --rad-lg: 0.75rem;
-            --rad-xl: 1.25rem;
-            --rad-pill: 9999px;
-            --rad-circle: 50%;
+            --sz-avatar:    clamp(130px, 11vw,  186px);
+            --sz-social:    clamp(36px,  4.5vw,  42px);
+            --sz-icon:      clamp(15px,  2vw,    18px);
+            --sz-tech-icon: clamp(22px,  2.6vw,  26px);
+            --sz-tech-card: clamp(74px,  9vw,    92px);
+            --sz-proj-img:  clamp(150px, 20vh,  195px);
+            --sz-award-ico: clamp(1.2rem, 1.6vw, 1.45rem);
+            --sz-dot:       clamp(4px,   0.5vw,   6px);
+            --sz-border:    1px;
 
-            /* =========================================
-               3. TYPOGRAPHY
-               ========================================= */
-            --font-main: 'Inter', sans-serif;
-            
-            --fs-h1: clamp(1.5rem, 4vw, 2.5rem);
-            --fs-h2: clamp(1.5rem, 3vw, 2.25rem);
-            --fs-body: clamp(1rem, 1.1vw, 1.125rem);
-            --fs-sm: clamp(0.875rem, 1vw, 1rem);
-            --fs-xs: clamp(0.7rem, 0.9vw, 0.8rem);
-            --fs-icon: clamp(1.5rem, 2.5vw, 2rem);
-            --fs-proj-title: 1.25rem;
+            --min-proj:  clamp(280px, 42vw, 440px);
+            --min-about: clamp(260px, 28vw, 340px);
 
-            --fw-300: 300;
-            --fw-400: 400;
-            --fw-500: 500;
-            --fw-600: 600;
-            --fw-700: 700;
-            --fw-800: 800;
-            --fw-900: 900;
-
-            /* =========================================
-               4. COLORS (RGB Channels)
-               ========================================= */
-            --rgb-primary: 15, 23, 42;
-            --rgb-accent: 59, 130, 246;
-            --rgb-accent-hover: 37, 99, 235;
-            --rgb-white: 255, 255, 255;
-            --rgb-success: 5, 150, 105;
-            --rgb-black: 0, 0, 0;
-
-            /* --- Semantic Colors --- */
-            --c-primary: rgb(var(--rgb-primary));
-            --c-bg: #f8fafc;
-            --c-text-main: #334155;
-            --c-text-muted: #64748b;
-            --c-text-inv: #94a3b8;
-            --c-text-light: rgb(var(--rgb-white));
-            --c-trans: transparent;
-
-            --c-accent: rgb(var(--rgb-accent));
-            --c-accent-h: rgb(var(--rgb-accent-hover));
-            --c-accent-sub: #eff6ff;
-            --c-accent-bord: #bfdbfe;
-            
-            /* --- Backgrounds --- */
-            --bg-glass-str: rgba(var(--rgb-white), var(--op-85));
-            --bg-glass-med: rgba(var(--rgb-white), var(--op-80));
-            --bg-glass-lit: rgba(var(--rgb-white), var(--op-70));
-            --bg-glass-sub: rgba(var(--rgb-white), var(--op-05));
-            --bg-solid: rgb(var(--rgb-white));
-            --bg-banner: rgba(var(--rgb-accent-hover), var(--op-10));
-            
-            /* --- Borders --- */
-            --bd-light: #e2e8f0;
-            --bd-hover: #cbd5e1;
-            --bd-glass: rgba(var(--rgb-white), var(--op-60));
-            --bd-accent-dim: rgba(var(--rgb-accent-hover), var(--op-20));
-
-            /* --- Status --- */
-            --bg-success: #ecfdf5;
-            --tx-success: #059669;
-            --bg-dev: #eff6ff;
-            --tx-dev: #2563eb;
-
-            /* --- Tech --- */
-            --tc-java: #d97706;
-            --tc-js: #ca8a04;
-            --tc-py: #2563eb;
-            --tc-node: #16a34a;
-            --tc-flask: #dc2626;
-            --tc-and: #0284c7;
-            --tc-ai-bg: #eef2ff;
-            --tc-ai-tx: #4f46e5;
-
-            /* =========================================
-               5. EFFECTS & TRANSFORMS
-               ========================================= */
-            --blur-sm: 4px;
-            --blur-md: 10px;
-            
-            --tr-scale-1: 1;
-            --tr-scale-h: 1.05;
-            --tr-scale-a: 1.08;
-            --tr-rot-h: 2deg;
-            --tr-lift-sm: -2px;
-            --tr-lift-md: -5px;
-            --tr-lift-lg: -8px;
-            
-            --t-fast: 0.2s;
-            --t-norm: 0.3s;
-            --t-slow: 0.6s;
-            --t-fade: 0.8s;
-            --t-pulse: 2s;
-            --t-bg: 15s;
-            --d-1: 0.1s;
-            --d-2: 0.2s;
-            --d-3: 0.3s;
-
-            /* --- Shadows --- */
-            --sh-sm: 0 4px 14px rgba(var(--rgb-primary), var(--op-10));
-            --sh-md: 0 10px 30px -10px rgba(var(--rgb-black), var(--op-05));
-            --sh-lg: 0 20px 40px -12px rgba(var(--rgb-black), var(--op-15));
-            --sh-glow: 0 0 30px rgba(var(--rgb-accent), var(--op-15));
-            --sh-hover: 0 8px 20px rgba(var(--rgb-primary), var(--op-20));
-            --sh-pulse-start: 0 0 0 0 rgba(var(--rgb-accent), var(--op-40));
-            --sh-pulse-end: 0 0 0 10px rgba(var(--rgb-accent), var(--op-0));
-
-            /* --- Gradients --- */
-            --gr-head: linear-gradient(-45deg, #f1f5f9, #ffffff, #e0f2fe, #f0fdf4);
-            --gr-txt: linear-gradient(90deg, var(--c-primary), var(--c-accent-h));
-            --gr-bg1: radial-gradient(at 0% 0%, rgba(var(--rgb-accent), var(--op-10)) 0px, transparent 50%);
-            --gr-bg2: radial-gradient(at 100% 100%, rgba(16, 185, 129, var(--op-10)) 0px, transparent 50%);
+            --z-nav: 10;
+            --t:     0.2s ease;
         }
 
-        /* --- RESET --- */
-        *, *::before, *::after { 
-            margin: var(--num-0); 
-            padding: var(--num-0); 
-            box-sizing: border-box; 
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        body { 
-            font-family: var(--font-main); 
-            background-color: var(--c-bg);
-            background-image: var(--gr-bg1), var(--gr-bg2);
-            background-attachment: fixed;
-            color: var(--c-text-main); 
-            line-height: var(--lh-base); 
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--f-serif);
+            background: var(--c-bg);
+            color: var(--c-sub);
+            line-height: var(--lh-body);
             font-size: var(--fs-body);
-            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- UTILS --- */
-        .container { 
-            width: var(--layout-w); 
-            margin-inline: auto; 
-            padding-inline: var(--sp-sm); 
+        .wrap {
+            width: var(--w-page);
+            margin-inline: auto;
+            padding-inline: var(--pad-page);
         }
 
-        .fade-in { 
-            opacity: var(--op-0); 
-            animation: fadeInUp var(--t-fade) cubic-bezier(0.2, 0.8, 0.2, 1) forwards; 
-        }
-        .delay-1 { animation-delay: var(--d-1); }
-        .delay-2 { animation-delay: var(--d-2); }
-        .delay-3 { animation-delay: var(--d-3); }
-
-        /* --- KEYFRAMES --- */
-        @keyframes fadeInUp {
-            from { opacity: var(--op-0); transform: translateY(var(--sp-md)); }
-            to { opacity: var(--op-100); transform: translateY(var(--num-0)); }
-        }
-        @keyframes pulse-glow {
-            0% { box-shadow: var(--sh-pulse-start); }
-            70% { box-shadow: var(--sh-pulse-end); }
-            100% { box-shadow: var(--sh-pulse-end); }
-        }
-        @keyframes gradient-bg {
-            0% { background-position: var(--pct-0) var(--pct-50); }
-            50% { background-position: var(--pct-100) var(--pct-50); }
-            100% { background-position: var(--pct-0) var(--pct-50); }
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--c-bg);
+            border-bottom: var(--sz-border) solid var(--c-line);
+            z-index: var(--z-nav);
         }
 
-        /* --- HEADER --- */
-        header {
-            padding-block: var(--header-pad);
-            text-align: center;
-            background: var(--gr-head);
-            background-size: var(--pct-400) var(--pct-400);
-            animation: gradient-bg var(--t-bg) ease infinite;
-            border-bottom: var(--sz-border-thin) solid var(--bd-light);
-        }
-
-        .news-banner {
-            display: inline-flex;
+        nav .wrap {
+            display: flex;
+            justify-content: flex-end;
             align-items: center;
-            gap: var(--sp-xs);
-            background: var(--bg-banner);
-            border: var(--sz-border-thin) solid var(--bd-accent-dim);
-            padding: var(--sp-2xs) var(--sp-sm);
-            border-radius: var(--rad-pill);
-            margin-bottom: var(--sp-md);
-            font-size: var(--fs-sm);
-            color: var(--c-accent-h);
-            font-weight: var(--fw-600);
-            backdrop-filter: blur(var(--blur-sm));
-            max-width: var(--pct-100);
+            padding-block: var(--pad-nav);
         }
-        
-        .news-banner span {
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: var(--gap-nav);
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            text-transform: uppercase;
+            color: var(--c-muted);
+            text-decoration: none;
             white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            transition: color var(--t);
         }
 
-        .pulse-dot {
-            flex-shrink: var(--flex-shrink-0);
-            width: var(--sz-dot); 
-            height: var(--sz-dot); 
-            background: var(--c-accent-h); 
-            border-radius: var(--rad-circle);
-            animation: pulse-glow var(--t-pulse) infinite;
-        }
+        .nav-links a:hover { color: var(--c-ink); }
 
-        .avatar {
+        .hero { border-bottom: var(--sz-border) solid var(--c-line); }
+
+        .hero .wrap { padding-block: var(--sp-6); }
+
+        .avatar-box { margin-bottom: var(--sp-4); }
+
+        .avatar-box img {
             width: var(--sz-avatar);
             height: var(--sz-avatar);
-            border-radius: var(--rad-circle);
             object-fit: cover;
-            border: var(--sz-border-avatar) solid var(--bg-solid);
-            box-shadow: var(--sh-lg);
+            object-position: center top;
             display: block;
-            margin: var(--num-0) auto var(--sp-sm) auto;
-            transition: transform var(--t-norm);
+            border-radius: 50%;
+            border: var(--sz-border) solid var(--c-line);
         }
-        .avatar:hover { transform: scale(var(--tr-scale-h)) rotate(var(--tr-rot-h)); }
 
-        h1 { 
-            font-size: var(--fs-h1); 
-            color: var(--c-primary); 
-            font-weight: var(--fw-900); 
-            letter-spacing: var(--track-tight);
-            margin-bottom: var(--sp-sm);
-            background: var(--gr-txt);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: var(--c-trans);
+        h1 {
+            font-family: var(--f-serif);
+            font-size: var(--fs-h1);
+            font-weight: 700;
+            line-height: var(--lh-head);
+            letter-spacing: var(--ls-tight);
+            color: var(--c-ink);
+            margin-bottom: var(--sp-3);
+        }
+
+        .hero-tagline {
+            font-family: var(--f-serif);
+            font-size: var(--fs-tag);
+            font-style: italic;
             line-height: var(--lh-tight);
-        }
-        
-        .subtitle { 
-            font-size: var(--fs-body);
-            color: var(--c-text-muted); 
-            margin-bottom: var(--sp-sm); 
-            font-weight: var(--fw-500); 
+            margin-bottom: var(--sp-4);
         }
 
-        .hero-badges { 
-            display: flex; 
-            justify-content: center; 
-            gap: var(--sp-xs); 
-            flex-wrap: wrap; 
-            margin-bottom: var(--sp-md); 
-        }
-        
-        .badge { 
-            background: var(--bg-glass-lit); 
-            border: var(--sz-border-thin) solid var(--bd-light); 
-            padding: var(--sp-2xs) var(--sp-sm); 
-            border-radius: var(--rad-pill); 
-            font-size: var(--fs-sm); 
-            font-weight: var(--fw-600); 
-            backdrop-filter: blur(var(--blur-sm));
-        }
-        .badge.highlight { 
-            background: var(--c-accent-sub); 
-            color: var(--c-accent-h); 
-            border-color: var(--c-accent-bord); 
+        .hero-meta {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono);
+            letter-spacing: var(--ls-meta);
+            line-height: var(--lh-mono);
+            color: var(--c-muted);
+            margin-bottom: var(--sp-4);
         }
 
-        /* --- BUTTONS --- */
-        .cta-buttons { 
-            display: flex; 
-            justify-content: center; 
-            gap: var(--sp-xs); 
-            flex-wrap: wrap; 
+        .hero-tag-wrap { margin-bottom: var(--sp-5); }
+
+        .hero-tag {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            text-transform: uppercase;
+            display: inline-block;
+            padding: var(--pad-tag-v) var(--pad-tag-h);
+            border: var(--sz-border) solid var(--c-line);
+            background: var(--c-white);
+            color: var(--c-muted);
         }
-        
-        .btn { 
-            display: inline-flex; 
-            align-items: center; 
+
+        .hero-links {
+            display: flex;
+            gap: var(--sp-2);
+            flex-wrap: wrap;
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            padding: var(--pad-btn-y) var(--pad-btn-x); 
-            border-radius: var(--rad-md); 
-            text-decoration: none; 
-            font-weight: var(--fw-600); 
-            font-size: var(--fs-sm);
-            transition: all var(--t-fast); 
-            border: var(--sz-border-thin) solid var(--c-trans);
-        }
-        
-        .btn-primary { 
-            background: var(--c-primary); 
-            color: var(--c-text-light); 
-            box-shadow: var(--sh-sm);
-        }
-        .btn-primary:hover { 
-            transform: translateY(var(--tr-lift-sm)); 
-            box-shadow: var(--sh-hover); 
-        }
-        
-        .btn-secondary { 
-            background: var(--bg-glass-med); 
-            color: var(--c-primary); 
-            border-color: var(--bd-hover);
-            backdrop-filter: blur(var(--blur-sm));
-        }
-        .btn-secondary:hover { 
-            border-color: var(--c-primary); 
-            background: var(--bg-solid); 
-            transform: translateY(var(--tr-lift-sm)); 
+            width: var(--sz-social);
+            height: var(--sz-social);
+            flex-shrink: 0;
+            border: var(--sz-border) solid var(--c-line);
+            background: var(--c-white);
+            color: var(--c-muted);
+            text-decoration: none;
+            transition: border-color var(--t), color var(--t);
         }
 
-        /* --- SECTIONS --- */
-        section { 
-            padding-top: var(--sp-sm);
-            padding-bottom: var(--sp-md);
+        .icon-btn:hover {
+            border-color: var(--c-ink);
+            color: var(--c-ink);
         }
 
-        section:first-of-type {
-            padding-top: var(--sp-lg);
+        .icon-btn svg {
+            width: var(--sz-icon);
+            height: var(--sz-icon);
+            fill: currentColor;
         }
-        
-        h2 { 
-            font-size: var(--fs-h2); 
-            color: var(--c-primary); 
-            margin-bottom: var(--sp-md); 
-            font-weight: var(--fw-800); 
-            display: flex; 
-            align-items: center; 
-            gap: var(--sp-xs); 
+
+        section { border-top: var(--sz-border) solid var(--c-line); }
+
+        section .wrap { padding-block: var(--sp-7); }
+
+        h2 {
+            font-family: var(--f-serif);
+            font-size: var(--fs-h2);
+            font-weight: 700;
             line-height: var(--lh-tight);
+            color: var(--c-ink);
+            margin-bottom: var(--sp-5);
         }
 
-        .auto-grid {
+        .about-cols {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(var(--sz-card-min), 1fr));
-            gap: var(--sp-md);
+            grid-template-columns: repeat(auto-fit, minmax(min(var(--min-about), 100%), 1fr));
+            gap: var(--gap-cols);
+            align-items: start;
         }
 
-        /* --- CARDS --- */
-        .glass-card { 
-            background: var(--bg-glass-str); 
-            padding: var(--sp-sm); 
-            border-radius: var(--rad-xl); 
-            box-shadow: var(--sh-md); 
-            border: var(--sz-border-thin) solid var(--bd-glass); 
-            backdrop-filter: blur(var(--blur-md));
-            transition: transform var(--t-norm);
+        .about-text p + p { margin-top: var(--sp-4); }
+
+        .tech-cats {
             display: flex;
             flex-direction: column;
+            gap: var(--sp-5);
         }
-        .glass-card:hover { transform: translateY(var(--tr-lift-md)); }
-        .glass-card p { color: var(--c-text-main); }
 
-        /* --- TECH TAGS --- */
-        .tech-tags { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: var(--sp-2xs); 
-            padding-top: var(--num-0); 
+        .tech-cat-label {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            text-transform: uppercase;
+            color: var(--c-faint);
+            margin-bottom: var(--sp-2);
         }
-        
-        .tech-tag { 
-            background: var(--c-bg);
-            padding: var(--pad-tag-y) var(--pad-tag-x); 
-            border-radius: var(--rad-md); 
-            font-size: var(--fs-sm); 
-            font-weight: var(--fw-600); 
-            border: var(--sz-border-thin) solid var(--c-trans); 
-            transition: var(--t-fast);
+
+        .tech-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--gap-tech);
         }
-        .tech-tag:hover { transform: scale(var(--tr-scale-h)); }
 
-        .tag-java { border-color: var(--tc-java); color: var(--tc-java); }
-        .tag-js { border-color: var(--tc-js); color: var(--tc-js); }
-        .tag-python { border-color: var(--tc-py); color: var(--tc-py); }
-        .tag-node { border-color: var(--tc-node); color: var(--tc-node); }
-        .tag-flask { border-color: var(--tc-flask); color: var(--tc-flask); }
-        .tag-android { border-color: var(--tc-and); color: var(--tc-and); }
-        .tag-ai { background: var(--tc-ai-bg); color: var(--tc-ai-tx); border-color: var(--tc-ai-tx); }
-
-        /* --- PROJECTS --- */
-        .project-card { 
-            background: var(--bg-solid); 
-            border-radius: var(--rad-xl); 
-            overflow: hidden; 
-            border: var(--sz-border-thin) solid var(--bd-light); 
-            transition: var(--t-norm); 
-            display: flex; 
+        .tech-card {
+            width: var(--sz-tech-card);
+            background: var(--c-white);
+            border: var(--sz-border) solid var(--c-line);
+            padding: var(--pad-tech-v) var(--pad-tech-h);
+            display: flex;
             flex-direction: column;
-            position: relative;
-            height: var(--pct-100);
-        }
-        
-        .project-card.featured {
-            border: var(--sz-border-thick) solid var(--c-accent);
-            box-shadow: var(--sh-glow);
-        }
-        
-        .featured-badge {
-            position: absolute; 
-            top: var(--sp-sm); 
-            right: var(--sp-sm); 
-            background: var(--c-accent); 
-            color: var(--c-text-light); 
-            font-size: var(--fs-sm); 
-            font-weight: var(--fw-700); 
-            padding: var(--pad-badge-y) var(--pad-badge-x); 
-            border-radius: var(--rad-pill); 
-            z-index: var(--num-10);
-            box-shadow: var(--sh-sm);
+            align-items: center;
+            gap: var(--sp-2);
         }
 
-        .project-card:hover { 
-            transform: translateY(var(--tr-lift-lg)); 
-            box-shadow: var(--sh-lg); 
-        }
-        
-        .project-img { 
-            height: var(--sz-proj-img); 
-            background: var(--c-bg); 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            overflow: hidden; 
-            border-bottom: var(--sz-border-thin) solid var(--bd-light); 
-        }
-        
-        .project-img img {
-            width: var(--pct-100);
-            height: var(--pct-100);
-            object-fit: cover;
-            transition: transform var(--t-slow);
-        }
-        .project-card:hover .project-img img { transform: scale(var(--tr-scale-a)); }
-        
-        .project-content { 
-            padding: var(--sp-sm); 
-            flex-grow: var(--flex-grow-1); 
-            display: flex; 
-            flex-direction: column; 
-        }
-        
-        .status-badge { 
-            display: inline-block; 
-            font-size: var(--fs-xs); 
-            font-weight: var(--fw-700); 
-            text-transform: uppercase; 
-            padding: var(--pad-badge-y) var(--pad-badge-x); 
-            border-radius: var(--rad-sm); 
-            margin-bottom: var(--sp-2xs); 
-            align-self: flex-start;
-        }
-        .status-success { background: var(--bg-success); color: var(--tx-success); }
-        .status-dev { background: var(--bg-dev); color: var(--tx-dev); }
-
-        .project-title { 
-            font-size: var(--fs-proj-title); 
-            font-weight: var(--fw-800); 
-            color: var(--c-primary); 
-            margin-bottom: var(--sp-2xs); 
-        }
-        .project-desc { 
-            font-size: var(--fs-sm); 
-            color: var(--c-text-muted); 
-            margin-bottom: var(--sp-sm); 
-            line-height: var(--lh-relaxed); 
-        }
-        
-        .project-link { 
-            margin-top: auto; 
-            color: var(--c-accent); 
-            text-decoration: none; 
-            font-weight: var(--fw-700); 
-            display: flex; 
-            align-items: center; 
-            gap: var(--gap-link); 
-            transition: var(--t-fast); 
-            font-size: var(--fs-sm);
-        }
-        .project-link:hover { 
-            gap: var(--gap-link-hover); 
-            color: var(--c-accent-h); 
+        .tech-card img {
+            width: var(--sz-tech-icon);
+            height: var(--sz-tech-icon);
+            object-fit: contain;
+            display: block;
         }
 
-        /* --- ACHIEVEMENTS --- */
-        .awards-list { 
-            display: flex; 
-            flex-direction: column; 
-            gap: var(--sp-sm); 
+        .tech-name {
+            font-family: var(--f-mono);
+            font-size: var(--fs-tech);
+            letter-spacing: var(--ls-meta);
+            text-transform: uppercase;
+            color: var(--c-muted);
+            text-align: center;
+            line-height: var(--lh-tight);
         }
-        
-        .award-item { 
-            display: flex; 
-            align-items: flex-start; 
-            background: var(--bg-solid); 
-            padding: var(--sp-sm); 
-            border-radius: var(--rad-lg); 
-            border: var(--sz-border-thin) solid var(--bd-light); 
-            transition: var(--t-fast);
-            position: relative; 
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(var(--min-proj), 100%), 1fr));
+            gap: var(--gap-grid);
+        }
+
+        .project-card {
+            background: var(--c-white);
+            border: var(--sz-border) solid var(--c-line);
+            display: flex;
+            flex-direction: column;
+            transition: border-color var(--t);
+        }
+
+        .project-card:hover { border-color: var(--c-line-h); }
+
+        .proj-img {
+            height: var(--sz-proj-img);
             overflow: hidden;
-        }
-        
-        .award-item.highlight-border {
-            border-left: var(--sz-border-avatar) solid var(--c-accent-h);
-        }
-
-        .award-item::before {
-            content: ''; 
-            position: absolute; 
-            left: var(--num-0); top: var(--num-0); bottom: var(--num-0); 
-            width: var(--sz-border-avatar); 
-            background: var(--bd-light); 
-            transition: var(--t-norm);
-            opacity: var(--op-0);
-        }
-        
-        .award-item:not(.highlight-border):hover::before { 
-            opacity: var(--op-100);
-            background: var(--c-accent); 
-        }
-        
-        .award-item:hover { 
-            transform: translateX(var(--sz-award-offset)); 
-            box-shadow: var(--sh-sm); 
-        }
-        
-        .award-icon { 
-            font-size: var(--fs-icon); 
-            margin-right: var(--sp-sm); 
-            line-height: var(--lh-none); 
-            min-width: var(--min-w-icon); 
-            text-align: center; 
-        }
-        
-        .award-date { 
-            font-size: var(--fs-xs); 
-            text-transform: uppercase; 
-            letter-spacing: var(--track-wide); 
-            color: var(--c-text-inv); 
-            font-weight: var(--fw-700); 
-            margin-bottom: var(--margin-award-date); 
-            display: block; 
-        }
-        
-        .award-text strong { 
-            display: block; 
-            color: var(--c-primary); 
-            font-size: var(--fs-body); 
-            margin-bottom: var(--margin-award-date); 
-        }
-        .award-text span { 
-            font-size: var(--fs-sm); 
-            color: var(--c-text-muted); 
+            background: var(--c-bg);
+            border-bottom: var(--sz-border) solid var(--c-line);
+            flex-shrink: 0;
         }
 
-        /* --- FOOTER --- */
-        footer { 
-            background: var(--c-primary); 
-            color: var(--c-text-inv); 
-            padding-block: var(--sp-md); 
-            text-align: center; 
-            font-size: var(--fs-sm); 
-            margin-top: var(--sp-lg); 
-            border-top: var(--sz-border-avatar) solid var(--c-accent); 
-        }
-        
-        .social-links { margin-bottom: var(--sp-sm); }
-        
-        .social-links a { 
-            display: inline-block; 
-            padding: var(--pad-social-y) var(--pad-social-x); 
-            background: var(--bg-glass-sub); 
-            border-radius: var(--rad-pill); 
-            margin: var(--sp-2xs) var(--margin-social-x); 
-            color: var(--c-text-light); 
-            text-decoration: none; 
-            font-weight: var(--fw-600); 
-            transition: var(--t-norm);
-        }
-        .social-links a:hover { 
-            background: var(--c-accent); 
-            color: var(--c-text-light); 
+        .proj-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
+        .proj-body {
+            padding: var(--sp-4);
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .proj-status {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            text-transform: uppercase;
+            margin-bottom: var(--sp-2);
+            display: flex;
+            align-items: center;
+            gap: var(--sp-2);
+        }
+
+        .proj-status::before {
+            content: '';
+            display: block;
+            width: var(--sz-dot);
+            height: var(--sz-dot);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .s-live, .s-mvp              { color: var(--c-green); }
+        .s-live::before, .s-mvp::before { background: var(--c-green); }
+        .s-dev                        { color: var(--c-blue); }
+        .s-dev::before                { background: var(--c-blue); }
+        .s-maint                      { color: var(--c-amber); }
+        .s-maint::before              { background: var(--c-amber); }
+
+        .proj-title {
+            font-family: var(--f-serif);
+            font-size: var(--fs-proj);
+            font-weight: 700;
+            line-height: var(--lh-tight);
+            color: var(--c-ink);
+            margin-bottom: var(--sp-3);
+        }
+
+        .proj-desc {
+            font-size: var(--fs-sm);
+            line-height: var(--lh-loose);
+            flex: 1;
+            margin-bottom: var(--sp-4);
+        }
+
+        .proj-link {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            text-transform: uppercase;
+            color: var(--c-ink);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-2);
+            transition: color var(--t);
+        }
+
+        .proj-link:hover { color: var(--c-faint); }
+
+        .awards-list { border-top: var(--sz-border) solid var(--c-line); }
+
+        .award-item {
+            display: grid;
+            grid-template-columns: var(--sz-award-ico) 1fr;
+            gap: var(--sp-4);
+            align-items: start;
+            padding-block: var(--sp-4);
+            border-bottom: var(--sz-border) solid var(--c-line);
+        }
+
+        .award-icon { font-size: var(--sz-award-ico); }
+
+        .award-title {
+            font-family: var(--f-serif);
+            font-size: var(--fs-body);
+            font-weight: 700;
+            line-height: var(--lh-tight);
+            color: var(--c-ink);
+            margin-bottom: var(--sp-1);
+        }
+
+        .award-desc {
+            font-size: var(--fs-sm);
+            line-height: var(--lh-loose);
+        }
+
+        footer { border-top: var(--sz-border) solid var(--c-line); }
+
+        footer .wrap { padding-block: var(--sp-5); }
+
+        .footer-copy {
+            font-family: var(--f-mono);
+            font-size: var(--fs-mono-s);
+            letter-spacing: var(--ls-caps);
+            color: var(--c-faint);
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container fade-in">
-        <!-- News Ticker -->
-        <div class="news-banner">
-            <div class="pulse-dot"></div>
-            <span>Презентация Borodinbaa AI в Великом камне</span>
-        </div>
+<nav>
+    <div class="wrap">
+        <ul class="nav-links">
+            <li><a href="#about">О себе</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#achievements">Достижения</a></li>
+        </ul>
+    </div>
+</nav>
 
-        <img src="avatar.jpg" alt="Артем Бородин" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Artyom+Borodin&background=0f172a&color=fff&size=320&font-size=0.33'">
-        
+<header class="hero">
+    <div class="wrap">
+        <div class="avatar-box">
+            <img src="avatar.jpg" alt="Артём Бородин">
+        </div>
         <h1>Артём Бородин</h1>
-        <div class="subtitle">Студент-юрист, Full Stack Developer, AI Enthusiast</div>
-        
-        <div class="hero-badges">
-            <div class="badge highlight">Академия МВД Республики Беларусь</div>
-            <div class="badge">Студент (3 курс)</div>
-            <div class="badge highlight">Красный диплом (в процессе)</div>
+        <div class="hero-tagline">Юриспруденция и разработка программного обеспечения</div>
+        <div class="hero-meta">Академия МВД Республики Беларусь, факультет права, 3 курс</div>
+        <div class="hero-tag-wrap">
+            <span class="hero-tag">Красный диплом (в процессе)</span>
         </div>
-
-        <div class="cta-buttons">
-            <a href="https://t.me/adstra000" class="btn btn-primary" target="_blank">Telegram</a>
-            <a href="https://instagram.com/borodin.baa" class="btn btn-secondary" target="_blank">Instagram</a>
-            <a href="https://github.com/borodinbaa" class="btn btn-secondary" target="_blank">GitHub</a>
-            <a href="mailto:borodinbaa.dev@gmail.com" class="btn btn-secondary">Email</a>
+        <div class="hero-links">
+            <a href="https://t.me/adstra000" class="icon-btn" target="_blank" rel="noopener" title="Telegram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="https://github.com/borodinbaa" class="icon-btn" target="_blank" rel="noopener" title="GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            </a>
+            <a href="https://instagram.com/borodin.baa" class="icon-btn" target="_blank" rel="noopener" title="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="mailto:borodinbaa@gmail.com" class="icon-btn" title="Email">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.001 0-.002.001-.003l6.544 4.908L12 14.193l5.455-3.831L24 5.454c0 .001 0 .002.001.003zM12 11.364L.587 3.043A1.63 1.63 0 0 1 1.636 2.727h20.728c.41 0 .785.153 1.049.397z"/></svg>
+            </a>
         </div>
     </div>
 </header>
 
-<div class="container">
-    
-    <!-- About Section -->
-    <section class="fade-in delay-1">
-        <div class="auto-grid">
-            <div class="glass-card">
-                <h2>📜 О себе</h2>
-                <p>Совмещаю учебу, научную, общественную деятельность и разработку. Я люблю программирование, но вижу в нем прежде всего инструмент. Моя цель: создавать что-то значимое, полезное. Сейчас развиваюсь в направлении RAG (Retrieval-Augmented Generation) и нейросетей для юриспруденции.</p>
+<section id="about">
+    <div class="wrap">
+        <div class="about-cols">
+            <div>
+                <h2>О себе</h2>
+                <div class="about-text">
+                    <p>Совмещаю право и информационные технологии. Строю инструменты которые делают юридическую работу быстрее и точнее. Сейчас развиваюсь в направлении RAG (Retrieval-Augmented Generation) и нейросетей для юриспруденции.</p>
+                </div>
             </div>
-            <div class="glass-card">
-                <h2>🛠 Технологии</h2>
-                <div class="tech-tags">
-                    <!-- Core & Backend -->
-                    <span class="tech-tag tag-java">Java</span>
-                    <span class="tech-tag tag-python">Python</span>
-                    <span class="tech-tag tag-js">JavaScript</span>
-                    <span class="tech-tag tag-node">Node.js & Express</span>
-                    <span class="tech-tag tag-flask">Flask</span>
-    
-                    <!-- Mobile -->
-                    <span class="tech-tag tag-android">Android SDK</span>
-                    
-                    <!-- AI & Data Science -->
-                    <span class="tech-tag tag-ai">RAG / AI</span>
-                    <span class="tech-tag">Pandas</span>
-                    <span class="tech-tag">Gemini API</span>
-                    <span class="tech-tag">Pinecone</span>
-                    
-                    <!-- Cloud & DB -->
-                    <span class="tech-tag">Firebase</span>
-                    <span class="tech-tag">Turso</span>
-                    <span class="tech-tag">SQLite</span>
+            <div>
+                <h2>Технологии</h2>
+                <div class="tech-cats">
+                    <div class="tech-cat">
+                        <div class="tech-cat-label">AI & Data</div>
+                        <div class="tech-row">
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" alt="Python">
+                                <span class="tech-name">Python</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://qdrant.tech/img/brand-resources-logos/qdrant-brandmark-red.png" alt="Qdrant">
+                                <span class="tech-name">Qdrant</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Gemini-icon.png" alt="Gemini API">
+                                <span class="tech-name">Gemini API</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/vertexai-color.png" alt="Vertex AI">
+                                <span class="tech-name">Vertex AI</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pandas/pandas-original.svg" alt="Pandas">
+                                <span class="tech-name">Pandas</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-cat">
+                        <div class="tech-cat-label">Backend & Web</div>
+                        <div class="tech-row">
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" alt="JavaScript">
+                                <span class="tech-name">JS</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" alt="Node.js">
+                                <span class="tech-name">Node.js</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.simpleicons.org/turso" alt="Turso">
+                                <span class="tech-name">Turso</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.simpleicons.org/express" alt="Express">
+                                <span class="tech-name">Express</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23454240' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5v14c0 1.657 4.03 3 9 3s9-1.343 9-3V5'/%3E%3Cpath d='M3 12c0 1.657 4.03 3 9 3s9-1.343 9-3'/%3E%3C/svg%3E" alt="SQL">
+                                <span class="tech-name">SQL</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud">
+                                <span class="tech-name">GCP</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.simpleicons.org/render" alt="Render">
+                                <span class="tech-name">Render</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-cat">
+                        <div class="tech-cat-label">Также работал с</div>
+                        <div class="tech-row">
+                            <div class="tech-card">
+                                <img src="https://images.seeklogo.com/logo-png/48/2/pinecone-icon-logo-png_seeklogo-482365.png" alt="Pinecone">
+                                <span class="tech-name">Pinecone</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flask/flask-original.svg" alt="Flask">
+                                <span class="tech-name">Flask</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/grok-ai-icon.png" alt="Grok">
+                                <span class="tech-name">Grok API</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" alt="Java">
+                                <span class="tech-name">Java</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg" alt="Android SDK">
+                                <span class="tech-name">Android SDK</span>
+                            </div>
+                            <div class="tech-card">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg" alt="Firebase">
+                                <span class="tech-name">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="fade-in delay-2">
-        <h2>🚀 Проекты</h2>
-        <div class="auto-grid">
-            
-            <div class="project-card featured">
-                <div class="featured-badge">🔥 Инновация БелИСА 2025</div>
-                <div class="project-img">
-                    <img src="project1.jpg" alt="AI Assistant">
+<section id="projects">
+    <div class="wrap">
+        <h2>Проекты</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="proj-img">
+                    <img src="project1.jpg" alt="Legal AI">
                 </div>
-                <div class="project-content">
-                    <span class="status-badge status-dev">В разработке</span>
-                    <div class="project-title">Borodinbaa Legal AI Assistant</div>
-                    <div class="project-desc">
-                        Правовой ИИ-ассистент на базе RAG. Анализирует правовые акты Республики Беларусь, дает предварительную квалификацию ситуации. <strong>Включен в государственный каталог инновационных разработок БелИСА (2025).</strong> Демонстрировался в индустриальном парке "Великий камень".
-                    </div>
-                    <a href="https://borodinbaa.github.io/borodinbaa-info/" class="project-link" target="_blank">Справка →</a>
+                <div class="proj-body">
+                    <div class="proj-status s-mvp">MVP / Тестирование</div>
+                    <div class="proj-title">Borodinbaa Legal AI Assistant</div>
+                    <p class="proj-desc">Правовой ИИ-ассистент на базе RAG. Анализирует правовые акты Республики Беларусь, даёт предварительную квалификацию ситуации. Включён в государственный каталог инновационных разработок БелИСА (2025). Демонстрировался в «Великом камне».</p>
+                    <a href="https://borodinbaa.github.io/borodinbaa-info/" class="proj-link" target="_blank" rel="noopener">Перейти →</a>
                 </div>
             </div>
-
             <div class="project-card">
-                <div class="project-img">
-                    <img src="project2.jpg" alt="Расписание">
+                <div class="proj-img">
+                    <img src="project2.jpg" alt="Расписание АМВД">
                 </div>
-                <div class="project-content">
-                    <span class="status-badge status-success">Официально внедрено</span>
-                    <div class="project-title">Расписание АМВД</div>
-                    <div class="project-desc">
-                        Веб-сервис расписание Академии МВД Республики Беларусь. Ежедневно используется сотнями курсантов, студентов и преподавателей. Удобный UX вместо таблиц Excel.
-                    </div>
-                    <a href="https://schedule.amia.by" class="project-link" target="_blank">Перейти на сайт →</a>
+                <div class="proj-body">
+                    <div class="proj-status s-live">Официально внедрено</div>
+                    <div class="proj-title">Расписание АМВД</div>
+                    <p class="proj-desc">Веб-сервис расписания Академии МВД Республики Беларусь. Ежедневно используется сотнями курсантов, студентов и преподавателей.</p>
+                    <a href="https://schedule.amia.by" class="proj-link" target="_blank" rel="noopener">Перейти →</a>
                 </div>
             </div>
-            
             <div class="project-card">
-                <div class="project-img">
+                <div class="proj-img">
                     <img src="project3.jpg" alt="PurrfectRef">
                 </div>
-                <div class="project-content">
-                    <span class="status-badge status-dev">Техническое обслуживание</span>
-                    <div class="project-title">PurrfectRef</div>
-                    <div class="project-desc">
-                        ИИ-форматтер библиографии по стандартам ВАК Республики Беларусь. Экономит часы ручной работы.
-                    </div>
+                <div class="proj-body">
+                    <div class="proj-status s-maint">Техническое обслуживание</div>
+                    <div class="proj-title">PurrfectRef</div>
+                    <p class="proj-desc">ИИ-форматтер библиографии по стандартам ВАК Республики Беларусь. Экономит часы ручной работы.</p>
                 </div>
             </div>
-
             <div class="project-card">
-                <div class="project-img">
-                    <img src="project4.jpg" alt="Генератор таблиц фотоизображений">
+                <div class="proj-img">
+                    <img src="project4.jpg" alt="Генератор таблиц">
                 </div>
-                <div class="project-content">
-                    <span class="status-badge status-success">MVP / Тестирование</span>
-                    <div class="project-title">Генератор таблиц фотоизображений</div>
-                    <div class="project-desc">
-                        Веб-сервис для автоматического формирования таблиц фотоизображений к протоколам следственных действий. Разрабатывался для Следственного комитета Республики Беларусь.
-                    </div>
-                    <a href="https://docs-generator-866165811326.europe-west3.run.app/" class="project-link" target="_blank">Смотреть демо-версию →</a>
+                <div class="proj-body">
+                    <div class="proj-status s-mvp">MVP / Тестирование</div>
+                    <div class="proj-title">Генератор таблиц фотоизображений</div>
+                    <p class="proj-desc">Автоматическое формирование таблиц фотоизображений к протоколам следственных действий. Разрабатывался для Следственного комитета Республики Беларусь.</p>
+                    <a href="https://docs-generator-866165811326.europe-west3.run.app/" class="proj-link" target="_blank" rel="noopener">Перейти →</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Achievements -->
-    <section class="fade-in delay-3">
-        <h2>🏆 Достижения и Участия</h2>
+<section id="achievements">
+    <div class="wrap">
+        <h2>Достижения</h2>
         <div class="awards-list">
-            
-            <div class="award-item highlight-border">
+            <div class="award-item">
                 <div class="award-icon">🎤</div>
-                <div class="award-text">
-                    <span class="award-date">Великий камень</span>
-                    <strong>Спикер. Презентация проекта</strong>
-                    <span>Выступление с правовым ИИ-ассистентом "Borodinbaa" в Китайско-Белорусском индустриальном парке.</span>
+                <div>
+                    <div class="award-title">Спикер — презентация проекта</div>
+                    <div class="award-desc">Выступление с правовым ИИ-ассистентом «Borodinbaa» в Китайско-Белорусском индустриальном парке «Великий камень».</div>
                 </div>
             </div>
-
+            <div class="award-item">
+                <div class="award-icon">⚖️</div>
+                <div>
+                    <div class="award-title">Победитель номинации «Нормотворчество»</div>
+                    <div class="award-desc">Белорусская студенческая юридическая олимпиада, Белорусский государственный университет.</div>
+                </div>
+            </div>
             <div class="award-item">
                 <div class="award-icon">🥇</div>
-                <div class="award-text">
-                    <span class="award-date">Минск</span>
-                    <strong>1 место — "The Hackathon: AI Era"</strong>
-                    <span>Лучшее решение на базе искусственного интеллекта.</span>
+                <div>
+                    <div class="award-title">1 место — «The Hackathon: AI Era»</div>
+                    <div class="award-desc">Лучшее решение на базе искусственного интеллекта, Минск.</div>
                 </div>
             </div>
-
             <div class="award-item">
                 <div class="award-icon">🛡️</div>
-                <div class="award-text">
-                    <span class="award-date">НЦЗПД</span>
-                    <strong>1 место — Конкурс по защите персональных данных</strong>
-                    <span>Лучшая научная работа.</span>
+                <div>
+                    <div class="award-title">1 место — Конкурс по защите персональных данных</div>
+                    <div class="award-desc">Лучшая научная работа, НЦЗПД.</div>
                 </div>
             </div>
-
             <div class="award-item">
                 <div class="award-icon">🥈</div>
-                <div class="award-text">
-                    <span class="award-date">Полоцк</span>
-                    <strong>2 место — IT-Challenge</strong>
-                    <span>Республиканская олимпиада по информационным технологиям.</span>
+                <div>
+                    <div class="award-title">2 место — IT-Challenge</div>
+                    <div class="award-desc">Республиканская олимпиада по информационным технологиям, Полоцк.</div>
                 </div>
             </div>
-            
-            <div class="award-item">
-                <div class="award-icon">🏨</div>
-                <div class="award-text">
-                    <span class="award-date">ПВТ</span>
-                    <strong>Участник — InDev Solutions Hackathon (БГУ & ПВТ)</strong>
-                    <span>Кейс: "Smart Hotel Access System".</span>
-                </div>
-            </div>
-
             <div class="award-item">
                 <div class="award-icon">💡</div>
-                <div class="award-text">
-                    <span class="award-date">Минск</span>
-                    <strong>Финалист министерского этапа — «100 идей для Беларуси»</strong>
-                    <span>Презентация правового ИИ-ассистента "Borodinbaa" на республиканском уровне.</span>
+                <div>
+                    <div class="award-title">Финалист министерского этапа — «100 идей для Беларуси»</div>
+                    <div class="award-desc">Презентация правового ИИ-ассистента «Borodinbaa» на республиканском уровне, Минск.</div>
                 </div>
             </div>
-
             <div class="award-item">
-                <div class="award-icon">👮‍♂️</div>
-                <div class="award-text">
-                    <span class="award-date">БГУИР</span>
-                    <strong>Участник — X Международная олимпиада среди курсантов по информатике</strong>
-                    <span>Национальный этап.</span>
+                <div class="award-icon">🏨</div>
+                <div>
+                    <div class="award-title">Участник — InDev Solutions Hackathon (БГУ и ПВТ)</div>
+                    <div class="award-desc">Кейс: «Smart Hotel Access System».</div>
                 </div>
             </div>
-
+            <div class="award-item">
+                <div class="award-icon">👮</div>
+                <div>
+                    <div class="award-title">Участник — X Международная олимпиада по информатике среди курсантов</div>
+                    <div class="award-desc">Национальный этап, БГУИР.</div>
+                </div>
+            </div>
             <div class="award-item">
                 <div class="award-icon">🇷🇺</div>
-                <div class="award-text">
-                    <span class="award-date">Москва</span>
-                    <strong>Финалист Хакатона МВД России</strong>
-                    <span>Трек Big Data & AI в правоохранительной деятельности.</span>
+                <div>
+                    <div class="award-title">Финалист Хакатона МВД России</div>
+                    <div class="award-desc">Трек Big Data и ИИ в правоохранительной деятельности, Москва.</div>
                 </div>
             </div>
-
         </div>
-    </section>
-
-</div>
+    </div>
+</section>
 
 <footer>
-    <div class="container">
-        <div class="social-links">
-            <a href="https://t.me/adstra000" target="_blank">Telegram</a>
-            <a href="https://instagram.com/borodin.baa" target="_blank">Instagram</a>
-            <a href="https://github.com/borodinbaa" target="_blank">GitHub</a>
-            <a href="mailto:borodinbaa.dev@gmail.com" target="_blank">Email</a>
-        </div>
-        <p>&copy; 2026 Артём Бородин</p>
+    <div class="wrap">
+        <span class="footer-copy">© 2026</span>
     </div>
 </footer>
-
-<script>
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-</script>
 
 </body>
 </html>
